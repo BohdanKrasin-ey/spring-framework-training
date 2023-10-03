@@ -5,12 +5,7 @@ import lombok.extern.java.Log;
 import org.javamoney.moneta.Money;
 import pl.training.shop.commons.aspect.Loggable;
 import pl.training.shop.commons.aspect.MinLength;
-import pl.training.shop.commons.aspect.Retry;
-import pl.training.shop.commons.aspect.Timer;
 import pl.training.shop.time.TimeProvider;
-
-import static pl.training.shop.commons.aspect.Timer.TimeUnit.MS;
-import static pl.training.shop.commons.aspect.Timer.TimeUnit.NS;
 
 @Log
 @RequiredArgsConstructor
@@ -47,7 +42,7 @@ public class PaymentProcessor implements PaymentService {
 
     @Override
     public Payment getById(@MinLength(16) String id) {
-        return paymentsRepository.getById(id)
+        return paymentsRepository.findById(id)
                 .orElseThrow(PaymentNotFoundException::new);
     }
 

@@ -18,7 +18,7 @@ public class InMemoryPaymentRepository implements PaymentRepository {
     }
 
     @Override
-    public Optional<Payment> getById(String id) {
+    public Optional<Payment> findById(String id) {
         return Optional.ofNullable(payments.get(id));
     }
 
